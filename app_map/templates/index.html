@@ -1,0 +1,33 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<h1>Aplicacion de seguimiento vehicular</h1>
+
+
+<!--<h2>Contenido Dinamico</h2>-->
+
+  <p>Visualizacion:</p>
+  <ul>
+
+
+    {% if user.is_authenticated %}
+     <li><strong>Placa:</strong> {{grupo}}</li>
+     <li><strong>Nombre Usuario:</strong> {{usuario}}</li>
+      <div class="container">
+          <div class="row mt-4">
+              <div class="col-md-10 offset-md-1">
+                  {{ m|safe }}
+                <meta http-equiv="refresh" content="8" />
+              </div>
+          </div>
+      </div>
+   {% else %}
+     <li><strong>FAVOR INICIE SESION <a href="{% url 'login'%}?next={{request.path}}">AQUI</a> PARA VER EL CONTENIDO </strong>  </li>
+
+
+    {% endif %}
+
+
+  </ul>
+
+{% endblock %}
